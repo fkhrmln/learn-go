@@ -8,7 +8,7 @@ import (
 
 func TestPool(t *testing.T) {
 	pool := sync.Pool{
-		New: func() any {
+		New: func() interface{} {
 			return "Empty"
 		},
 	}

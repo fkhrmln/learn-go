@@ -26,7 +26,7 @@ func (user User) GetName() string {
 	return user.Name
 }
 
-func anything() any {
+func anything() interface{} {
 	// return "Hello"
 
 	// return 1

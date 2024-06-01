@@ -12,7 +12,7 @@ type User struct {
 	Address string
 }
 
-func getFields(value any) {
+func getFields(value interface{}) {
 	valueType := reflect.TypeOf(value)
 
 	for i := 0; i < valueType.NumField(); i++ {
@@ -22,7 +22,7 @@ func getFields(value any) {
 	}
 }
 
-func isValid(value any) (valid bool) {
+func isValid(value interface{}) (valid bool) {
 	valueType := reflect.TypeOf(value)
 
 	for i := 0; i < valueType.NumField(); i++ {

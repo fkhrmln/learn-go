@@ -25,7 +25,7 @@ func TestMap(t *testing.T) {
 
 	group.Wait()
 
-	data.Range(func(key, value any) bool {
+	data.Range(func(key, value interface{}) bool {
 		fmt.Printf("%d : %d\n", key, value)
 
 		return true

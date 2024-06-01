@@ -2,11 +2,11 @@ package main
 
 import "fmt"
 
-func getStatus() any {
+func getStatus() interface{} {
 	return "Success"
 }
 
-func getStatusCode() any {
+func getStatusCode() interface{} {
 	return 404
 }
 

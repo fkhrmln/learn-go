@@ -23,7 +23,7 @@ func TestTemplate(t *testing.T) {
 
 		name := r.URL.Query().Get("name")
 
-		data := map[string]any{
+		data := map[string]interface{}{
 			"Title": "Hello World",
 			"Name":  name,
 		}
@@ -60,7 +60,7 @@ func TestTemplateEmbed(t *testing.T) {
 
 		name := r.URL.Query().Get("name")
 
-		data := map[string]any{
+		data := map[string]interface{}{
 			"Title": "Hello World",
 			"Name":  name,
 		}

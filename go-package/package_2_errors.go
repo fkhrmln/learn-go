@@ -10,7 +10,7 @@ var (
 	NotFoundError   = errors.New("Not Found Error")
 )
 
-func findName(value any, names ...string) error {
+func findName(value interface{}, names ...string) error {
 	var isFound bool
 
 	if _, ok := value.(string); !ok {

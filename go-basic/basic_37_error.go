@@ -29,7 +29,7 @@ func (notFoundError *NotFoundError) Error() string {
 	return notFoundError.Message
 }
 
-func findName(value any, names ...string) (string, error) {
+func findName(value interface{}, names ...string) (string, error) {
 	var isFound bool
 
 	switch value.(type) {
