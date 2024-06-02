@@ -20,7 +20,7 @@ var productService = ProductService{
 func TestProductServiceFindByIdSuccess(t *testing.T) {
 	product := entity.Product{
 		Id:    "12345",
-		Name:  "Product One",
+		Name:  "Product 1",
 		Price: 1000000,
 	}
 
