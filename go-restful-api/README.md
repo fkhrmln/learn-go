@@ -28,7 +28,7 @@ The Base URL for the API is :
 
 The API uses API Key authentication. You need to include your API Key in the `X-API-KEY` header for each request.
 
-Example:
+Example :
 
 `X-API-KEY: YOUR_API_KEY_HERE`
 
@@ -36,13 +36,13 @@ Example:
 
 ### Get List of Products
 
-- **Endpoint**: `/api/v1/products`
-- **Method**: GET
-- **Description**: Retrieves a list of products.
-- **Security**: Requires API Key.
-- **Response**:
+- **Endpoint** : `/api/v1/products`
+- **Method** : GET
+- **Description** : Retrieves a list of products.
+- **Security** : Requires API Key.
+- **Response** :
 
-  - **200 OK**: Successful response containing a list of products.
+  - **200 OK** : Successful response containing a list of products.
 
   ```
   {
@@ -60,22 +60,22 @@ Example:
 
 ### Create Product
 
-- **Endpoint**: `/api/v1/products`
-- **Method**: POST
-- **Description**: Creates a new product.
-- **Security**: Requires API Key.
-- **Request Body**:
+- **Endpoint** : `/api/v1/products`
+- **Method** : POST
+- **Description** : Creates a new product.
+- **Security** : Requires API Key.
+- **Request Body** :
 
-```
+  ```
   {
     "name": "string",
     "price": "number"
   }
-```
+  ```
 
-- **Response**:
+- **Response** :
 
-  - **201 Created**: Successful response containing the created product.
+  - **201 Created** : Successful response containing the created product.
 
   ```
   {
@@ -85,20 +85,21 @@ Example:
         "id": "string",
         "name": "string",
         "price": "number"
+    }
   }
   ```
 
 ### Get Product By Id
 
-- **Endpoint**: `/api/v1/products/{productId}`
-- **Method**: GET
-- **Description**: Retrieves a product by its id.
-- **Security**: Requires API Key.
-- **Parameters**:
+- **Endpoint** : `/api/v1/products/{productId}`
+- **Method** : GET
+- **Description** : Retrieves a product by its id.
+- **Security** : Requires API Key.
+- **Parameters** :
   - `productId` (path): The Id of the product to retrieve.
-- **Response**:
+- **Response** :
 
-  - **200 OK**: Successful response containing the product.
+  - **200 OK** : Successful response containing the product.
 
   ```
   {
@@ -108,18 +109,19 @@ Example:
         "id": "string",
         "name": "string",
         "price": "number"
+    }
   }
   ```
 
 ### Update Product By Id
 
-- **Endpoint**: `/api/v1/products/{productId}`
-- **Method**: PUT
-- **Description**: Updates a product by its id.
-- **Security**: Requires API Key.
-- **Parameters**:
+- **Endpoint** : `/api/v1/products/{productId}`
+- **Method** : PUT
+- **Description** : Updates a product by its id.
+- **Security** : Requires API Key.
+- **Parameters** :
   - `productId` (path): The Id of the product to update.
-- **Request Body**:
+- **Request Body** :
 
   ```
   {
@@ -128,9 +130,9 @@ Example:
   }
   ```
 
-- **Response**:
+- **Response** :
 
-  - **200 OK**: Successful response containing the updated product.
+  - **200 OK** : Successful response containing the updated product.
 
   ```
   {
@@ -146,15 +148,15 @@ Example:
 
 ### Delete Product By Id
 
-- **Endpoint**: `/api/v1/products/{productId}`
-- **Method**: DELETE
-- **Description**: Deletes a product by its id.
-- **Security**: Requires API Key.
-- **Parameters**:
+- **Endpoint** : `/api/v1/products/{productId}`
+- **Method** : DELETE
+- **Description** : Deletes a product by its id.
+- **Security** : Requires API Key.
+- **Parameters** :
   - `productId` (path): The Id of the product to delete.
-- **Response**:
+- **Response** :
 
-  - **200 OK**: Successful response indicating the product has been deleted.
+  - **200 OK** : Successful response indicating the product has been deleted.
 
   ```
   {
@@ -168,18 +170,19 @@ Example:
 
 ### Product
 
-- **Type**: Object
-- **Properties**:
+- **Type** : Object
+- **Properties** :
+
   - `id` (string): The unique identifier for the product.
   - `name` (string): The name of the product.
   - `price` (number): The price of the product.
 
-Example:
+- **Example** :
 
-```
-{
+  ```
+  {
     "id": "string",
     "name": "string",
     "price": "number"
-}
-```
+  }
+  ```
