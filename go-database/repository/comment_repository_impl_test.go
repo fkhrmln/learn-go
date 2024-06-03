@@ -18,27 +18,13 @@ func TestCreateComment(t *testing.T) {
 		Message:  "Hello World",
 	}
 
-	result, err := commentRepository.CreateComment(ctx, comment)
+	result, err := commentRepository.Create(ctx, comment)
 
 	if err != nil {
 		panic(err)
 	}
 
 	fmt.Println(result)
-}
-
-func TestFindById(t *testing.T) {
-	commentRepository := NewCommentRepository(database.GetConnection())
-
-	ctx := context.Background()
-
-	comment, err := commentRepository.FindById(ctx, 1)
-
-	if err != nil {
-		panic(err)
-	}
-
-	fmt.Println(comment)
 }
 
 func TestFindAll(t *testing.T) {
@@ -55,4 +41,18 @@ func TestFindAll(t *testing.T) {
 	for _, comment := range comments {
 		fmt.Println(comment)
 	}
+}
+
+func TestFindById(t *testing.T) {
+	commentRepository := NewCommentRepository(database.GetConnection())
+
+	ctx := context.Background()
+
+	comment, err := commentRepository.FindById(ctx, 1)
+
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(comment)
 }

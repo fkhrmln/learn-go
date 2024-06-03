@@ -16,7 +16,7 @@ func NewCommentRepository(db *sql.DB) CommentRepository {
 	return &commentRepositoryImpl{DB: db}
 }
 
-func (commentRepositoryImpl *commentRepositoryImpl) CreateComment(ctx context.Context, comment entity.Comment) (entity.Comment, error) {
+func (commentRepositoryImpl *commentRepositoryImpl) Create(ctx context.Context, comment entity.Comment) (entity.Comment, error) {
 	query := "INSERT INTO comment (username, message) VALUES (?, ?);"
 
 	result, err := commentRepositoryImpl.DB.ExecContext(ctx, query, comment.Username, comment.Message)
@@ -34,32 +34,6 @@ func (commentRepositoryImpl *commentRepositoryImpl) CreateComment(ctx context.Co
 	comment.Id = int(id)
 
 	return comment, nil
-}
-
-func (commentRepositoryImpl *commentRepositoryImpl) FindById(ctx context.Context, id int) (entity.Comment, error) {
-	query := "SELECT id, username, message FROM comment WHERE id = ? LIMIT 1;"
-
-	comment := entity.Comment{}
-
-	rows, err := commentRepositoryImpl.DB.QueryContext(ctx, query, id)
-
-	if err != nil {
-		return comment, err
-	}
-
-	defer rows.Close()
-
-	if rows.Next() {
-		err := rows.Scan(&comment.Id, &comment.Username, &comment.Message)
-
-		if err != nil {
-			return comment, err
-		}
-
-		return comment, nil
-	} else {
-		return comment, errors.New("Comment " + strconv.Itoa(id) + " Not Found")
-	}
 }
 
 func (commentRepositoryImpl *commentRepositoryImpl) FindAll(ctx context.Context) ([]entity.Comment, error) {
@@ -88,4 +62,30 @@ func (commentRepositoryImpl *commentRepositoryImpl) FindAll(ctx context.Context)
 	}
 
 	return comments, nil
+}
+
+func (commentRepositoryImpl *commentRepositoryImpl) FindById(ctx context.Context, id int) (entity.Comment, error) {
+	query := "SELECT id, username, message FROM comment WHERE id = ? LIMIT 1;"
+
+	comment := entity.Comment{}
+
+	rows, err := commentRepositoryImpl.DB.QueryContext(ctx, query, id)
+
+	if err != nil {
+		return comment, err
+	}
+
+	defer rows.Close()
+
+	if rows.Next() {
+		err := rows.Scan(&comment.Id, &comment.Username, &comment.Message)
+
+		if err != nil {
+			return comment, err
+		}
+
+		return comment, nil
+	} else {
+		return comment, errors.New("Comment " + strconv.Itoa(id) + " Not Found")
+	}
 }

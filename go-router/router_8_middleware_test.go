@@ -9,20 +9,20 @@ import (
 )
 
 type Logger struct {
-	handler http.Handler
+	Handler http.Handler
 }
 
 func (logger *Logger) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, r.Method, r.RequestURI)
 
-	logger.handler.ServeHTTP(w, r)
+	logger.Handler.ServeHTTP(w, r)
 }
 
 func TestMiddleware(t *testing.T) {
 	router := httprouter.New()
 
 	logger := Logger{
-		handler: router,
+		Handler: router,
 	}
 
 	router.GET("/", func(w http.ResponseWriter, r *http.Request, p httprouter.Params) {

@@ -7,13 +7,13 @@ import (
 )
 
 type Logger struct {
-	handler http.Handler
+	Handler http.Handler
 }
 
 func (logger *Logger) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, r.Method, r.RequestURI)
 
-	logger.handler.ServeHTTP(w, r)
+	logger.Handler.ServeHTTP(w, r)
 }
 
 func TestMiddleware(t *testing.T) {
@@ -22,7 +22,7 @@ func TestMiddleware(t *testing.T) {
 	}
 
 	logger := Logger{
-		handler: http.HandlerFunc(handler),
+		Handler: http.HandlerFunc(handler),
 	}
 
 	server := http.Server{
