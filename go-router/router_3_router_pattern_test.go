@@ -13,7 +13,7 @@ import (
 func TestNamedParams(t *testing.T) {
 	router := httprouter.New()
 
-	router.GET("/products/:productId/type/:typeId", func(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+	router.GET("/products/:productId/types/:typeId", func(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 		productId := p.ByName("productId")
 		typeId := p.ByName("typeId")
 
@@ -22,7 +22,7 @@ func TestNamedParams(t *testing.T) {
 
 	recorder := httptest.NewRecorder()
 
-	request := httptest.NewRequest(http.MethodGet, "/products/1/type/1", nil)
+	request := httptest.NewRequest(http.MethodGet, "/products/1/types/1", nil)
 
 	router.ServeHTTP(recorder, request)
 

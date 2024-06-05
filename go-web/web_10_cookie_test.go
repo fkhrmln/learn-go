@@ -10,7 +10,7 @@ import (
 
 func SetCookie(w http.ResponseWriter, r *http.Request) {
 	cookie := http.Cookie{}
-	cookie.Name = "cookie"
+	cookie.Name = "JWT"
 	cookie.Value = r.URL.Query().Get("name")
 	cookie.Path = "/"
 
@@ -20,7 +20,7 @@ func SetCookie(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetCookie(w http.ResponseWriter, r *http.Request) {
-	cookie, err := r.Cookie("cookie")
+	cookie, err := r.Cookie("JWT")
 
 	if err != nil {
 		w.WriteHeader(http.StatusForbidden)
@@ -76,7 +76,7 @@ func TestGetCookie(t *testing.T) {
 	request := httptest.NewRequest(http.MethodGet, "/", nil)
 
 	cookie := http.Cookie{}
-	cookie.Name = "cookie"
+	cookie.Name = "JWT"
 	cookie.Value = "Fakhri Maulana Ihsan"
 	cookie.Path = "/"
 

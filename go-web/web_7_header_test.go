@@ -10,7 +10,7 @@ import (
 
 func TestHeader(t *testing.T) {
 	var handler http.HandlerFunc = func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Add("X-Powered-By", "Fakhri Maulana Ihsan")
+		w.Header().Add("X-API-KEY", "SECRET")
 
 		contentType := r.Header.Get("Content-Type")
 
@@ -27,7 +27,7 @@ func TestHeader(t *testing.T) {
 
 	response := recorder.Result()
 
-	fmt.Println(response.Header.Get("X-Powered-By"))
+	fmt.Println(response.Header.Get("X-API-KEY"))
 
 	body, _ := io.ReadAll(response.Body)
 
