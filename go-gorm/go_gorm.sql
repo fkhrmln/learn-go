@@ -1,0 +1,104 @@
+-- Active: 1717342743334@@127.0.0.1@3306@go_gorm
+
+CREATE TABLE user (
+    id VARCHAR(50) NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at TIMESTAMP NULL,
+    PRIMARY KEY (id)
+) ENGINE = InnoDB;
+
+SELECT * FROM `user`;
+
+DELETE FROM `user`;
+
+DROP TABLE `user`;
+
+INSERT INTO
+    `user` (id, name)
+VALUES (
+        "00001",
+        "Fakhri Maulana Ihsan"
+    ),
+    ("00002", "Rifky Ferdiansyah"),
+    ("00003", "Audry Elgalia");
+
+CREATE TABLE product (
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    name VARCHAR(50) NOT NULL,
+    price INTEGER NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at TIMESTAMP NULL,
+    PRIMARY KEY (id)
+) ENGINE = InnoDB;
+
+SELECT * FROM product;
+
+DROP TABLE product;
+
+CREATE TABLE bank (
+    id VARCHAR(50) NOT NULL,
+    user_id VARCHAR(50) NOT NULL,
+    balance INTEGER NOT NULL DEFAULT 0,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    FOREIGN KEY (user_id) REFERENCES user (id)
+) ENGINE = InnoDB;
+
+SELECT * FROM bank;
+
+DELETE FROM bank;
+
+SELECT SUM(balance) FROM bank;
+
+CREATE TABLE post (
+    id VARCHAR(50) NOT NULL,
+    user_id VARCHAR(50) NOT NULL,
+    title VARCHAR(50) NOT NULL,
+    body TEXT NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    FOREIGN KEY (user_id) REFERENCES user (id)
+) ENGINE = InnoDB;
+
+SELECT * FROM post;
+
+DELETE FROM post;
+
+CREATE TABLE item (
+    id VARCHAR(50) NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    price INTEGER NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at TIMESTAMP NULL,
+    PRIMARY KEY (id)
+) ENGINE = InnoDB;
+
+SELECT * FROM item;
+
+DELETE FROM item;
+
+DROP TABLE item;
+
+CREATE TABLE user_item (
+    user_id VARCHAR(50) NOT NULL,
+    item_id VARCHAR(50) NOT NULL,
+    PRIMARY KEY (user_id, item_id),
+    FOREIGN KEY (user_id) REFERENCES user (id),
+    FOREIGN KEY (item_id) REFERENCES item (id)
+) ENGINE = InnoDB;
+
+SELECT * FROM user_item;
+
+DELETE FROM user_item;
+
+DROP TABLE user_item;
+
+DESC student;
+
+DROP TABLE student;
