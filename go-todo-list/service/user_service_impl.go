@@ -85,10 +85,10 @@ func (service *UserServiceImpl) SignIn(signInRequest request.SignInRequest) (res
 	token := helper.GenerateToken(user)
 
 	signInResponse := response.SignInResponse{
-		ID:       user.ID,
-		Email:    user.Email,
-		Username: user.Username,
-		Token:    token,
+		ID:          user.ID,
+		Email:       user.Email,
+		Username:    user.Username,
+		AccessToken: token,
 	}
 
 	return signInResponse, nil

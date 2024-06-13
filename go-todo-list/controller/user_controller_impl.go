@@ -67,7 +67,7 @@ func (controller *UserControllerImpl) SignIn(c *fiber.Ctx) error {
 
 	c.Cookie(&fiber.Cookie{
 		Name:  "JWT",
-		Value: signInResponse.Token,
+		Value: signInResponse.AccessToken,
 	})
 
 	return c.Status(200).JSON(response)

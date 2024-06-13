@@ -1,0 +1,11 @@
+-- Active: 1717342743334@@127.0.0.1@3306@go_oauth
+
+CREATE TABLE users (
+    id VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    name VARCHAR(100) NOT NULL,
+    picture TEXT NOT NULL,
+    PRIMARY KEY (id)
+) ENGINE = InnoDB;
+
+SELECT * FROM users;
